@@ -22,7 +22,7 @@ class user
 
 
 	public function require_auth(){
-		global $_REQUEST;
+		global $request;
 		if ($this->logged_in !== true){
 			if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 			&& $_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest'){
@@ -31,7 +31,7 @@ class user
 			}
 			else {
 				$_SESSION['session_expired']= true;
-				$_REQUEST->redirect('auth');
+				$request->redirect('auth');
 			}
 		}
 	}
