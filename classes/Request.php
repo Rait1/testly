@@ -2,7 +2,7 @@
 class Request
 {
 
-	public $controller=DEFAULT_CONTROLLER;
+	public $controller = DEFAULT_CONTROLLER;
 	public $action = 'index';
 	public $params = array();
 
@@ -17,11 +17,12 @@ class Request
 			}
 		}
 	}
-		public function redirect($destination)
-		{
-			header('Location: '.BASE_URL.$destination);
-		}
+
+	public function redirect($destination)
+	{
+		header('Location: '.BASE_URL.$destination);
 	}
+}
 
 
 $request = new Request;
