@@ -13,17 +13,22 @@
 	<title></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
-
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
 	<link rel="stylesheet" href="assets/css/normalize.css">
 	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
 	<style>
-	body {
-		padding-top: 60px;
-	}
+		body {
+			padding-top: 60px;
+		}
+
+		body, html {
+			background: url('<?=BASE_URL?>assets/img/bg.jpg');
+			height: 100%;
+		}
+		table.table-bordered tr {
+			background-color: #f9f9f9;
+		}
 	</style>
 </head>
 <body>
@@ -36,7 +41,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="brand" href="#">Project name</a>
+			<a class="brand" href="#">Testly</a>
 
 			<div class="nav-collapse collapse">
 				<ul class="nav">
