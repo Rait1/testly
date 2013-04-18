@@ -50,7 +50,9 @@
 	</div>
 </div>
 <div>
+
 	<?php
+	// nõuame views kaustast vastava kontrolleri, vastava actioni (funktsiooni)vaatefaili
 	require '/views/'.$request->controller.'_'.$request->action.'_view.php';
 	?>
 </div>

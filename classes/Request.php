@@ -1,4 +1,5 @@
 <?php
+//defineerib uue muutuja tüübi
 class Request
 {
 
