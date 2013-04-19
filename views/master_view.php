@@ -13,15 +13,18 @@
 	<title></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="assets/css/normalize.css">
+	<link rel="stylesheet" href="<?=ASSETS_URL?>css/normalize.css">
 	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="<?=ASSETS_URL?>css/main.css">
 
-	<script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
+
+
+	<script src="<?=ASSETS_URL?>js/vendor/modernizr-2.6.2.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-	<script src="assets/js/plugins.js"></script>
-	<script src="assets/js/main.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script src="<?=ASSETS_URL?>js/plugins.js"></script>
+	<script src="<?=ASSETS_URL?>js/main.js"></script>
 	<script>BASE_URL='<?=BASE_URL?>'</script>
 	<?if(!empty($this->scripts)) : ?>
 	<?foreach($this->scripts as $script) : ?>
@@ -56,7 +59,7 @@
 
 			<div class="nav-collapse collapse">
 				<ul class="nav">
-					<li class="active"><a href="<?= BASE_URL ?>tests">Home</a></li>
+					<li class="active"><a href="<?= BASE_URL ?>tests">Testid</a></li>
 					<li><a href="#about">About</a></li>
 					<li><a href="<?= BASE_URL ?>auth/logout">Logi välja</a></li>
 				</ul>
