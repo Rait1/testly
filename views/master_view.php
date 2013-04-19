@@ -16,11 +16,22 @@
 	<link rel="stylesheet" href="assets/css/normalize.css">
 	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/main.css">
+
 	<script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
-	<style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	<script src="assets/js/plugins.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script>BASE_URL='<?=BASE_URL?>'</script>
+	<?if(!empty($this->scripts)) : ?>
+	<?foreach($this->scripts as $script) : ?>
+	<script src="<?=ASSETS_URL?>js/<?=$script?>"> </script>
+	<?endforeach?>
+	<?endif?>
+		<style>
 		body {
 			padding-top: 60px;
-		}
+			}
 
 		body, html {
 			background: url('<?=BASE_URL?>assets/img/bg.jpg');
@@ -68,11 +79,6 @@
 
 <![endif]-->
 <!-- Add your site or application content here -->
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/main.js"></script>
 
 </body>
 </html>
