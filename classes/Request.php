@@ -1,46 +1,41 @@
 <?php
-//defineerib uue muutuja tüübi
-class Request
+/**
+ * Created by JetBrains PhpStorm.
+ * User: karmen.kukk
+ * Date: 15.04.13
+ * Time: 12:48
+ * To change this template use File | Settings | File Templates.
+ */
+
+class Request // objekt
 {
 
-	public $controller = DEFAULT_CONTROLLER;
+	public $controller = DEFAULT_CONTROLLER; // muutujad, nagu array-s/ klassi sees muutuja on property
 	public $action = 'index';
 	public $params = array();
 
-	public function __construct()
+	public function __construct() // funktsioon saab olla ainult klassis/ väljakutsumine: ->/ klassis ees funktsioon on meetod
 	{
-		//kui kasutaja on kirjutanud midagi addressirea lõppu
+		// kas on olemas $_SERVER-is PATH_INFO ehk kas kasutaja on kirjutanud midagi aadressirea lõppu
+		// $_SERVER['PATH_INFO'] = /kasutajad/vaatamine/23
 		if (isset($_SERVER['PATH_INFO'])) {
-
-			// $_SERVER['PATH_INFO'] = /kasutajad(controller)/vaatamine(action)/23(parameeter)
-			if ($path_info = explode('/', $_SERVER['PATH_INFO'])) {
-
-				array_shift($path_info);
-
-				// Kontrollime kas pathinfo[0] 1. liige on olemas, siis antud classi omaduse väärtuseks saab pathinfo
-				//massiivi esimene liige (mis samas ka eemaldatakse pathinfost). Kui pathinfos pole esimest liiget,
-				//pannakse antud classi controller omaduse väärtuseks welcome
+			//eraldab stringi liikmed tekitab array, kus liikmete vahel / ja paneb selle path_info-ks
+			if ($path_info = explode('/', $_SERVER['PATH_INFO'])) { // explode ülemise järgi tekitab 4 liiget
+				// läheb käima kui $path_info ei tagasta FALSE-i(juhul kui pole ühtegi / märki)
+				array_shift($path_info); // array_shift kustutab ära esimese liikme ja reastab liikmed uuesti(uus 0)
+				// $this viitab käesolevale klassile (Request)
 				$this->controller = isset($path_info[0]) ? array_shift($path_info) : 'welcome';
-
-				//Kontrollime kas pathinfo[0] 1. liige on olemas ja ei ole tühi, siis antud classi actioni väärtuseks saab
-				// allesjäänud pathinfo esimene liige (mis samas ka eemaldatakse). Juhul, kui pathinfos pole esimest liiget
-				//pannakse antud classi  actioni omaduse väärtuseks index
-				$this->action = isset($path_info[0]) && ! empty ($path_info[0]) ? array_shift($path_info) : 'index';
-
-				//Kontrollime, kas pathinfo [0] 1. liige on olemas, kui on olemas, saab antud classi parameetriteks kõik
-				// path info massiivi alles jäänud liikmed. Kui ei ole, annab väärtuseks NULL
-				$this->params = isset($path_info[0]) ? $path_info : NULL;
+				// array_shift võtab path_infost esimese liikme ära ja tagastab selle controllerisse
+				$this->action = isset($path_info[0]) && ! empty($path_info[0]) ? array_shift($path_info) : 'index';
+				$this->params = isset($path_info[0]) ? $path_info : NULL; // parameters
 			}
 		}
 	}
-	//Funktsioon ümbersuunamiseks . Selle parameetriks on $destination , mis saab väärtuse sellel  hetkel kui ta välja kutsutakse
-	//$request->redirect('tests');   redirect on meetod, mis omab parameetrit nimega $destination ja käivitumisel saab brauseri
-    //URLiks antud juhul BASE_URL (/testly/) ja liimib sellele otsa $ destination (tests) väärtuse.
-	public function redirect($destination)
-	{
-		header('Location: '.BASE_URL.$destination);
+	// ümbersuunamine
+	public function redirect($destination){
+		header('Location: '.BASE_URL.$destination); // header - aadressiribale, Location: peab olema
+		// saab väärtuse kui $request->redirect(väärtus)
 	}
 }
 
-//Kuu kusasgil tehakse $requesti vastu päring, siis käivitub uuesti Request classi .
 $request = new Request;
